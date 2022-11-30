@@ -1,0 +1,36 @@
+resources:
+  - name: git_node_repo
+    type: GitRepo
+    configuration:
+      environmentVariables:
+        path_for_logs:
+          default: internal-generic-customer-logs
+          description: we will upload customers log under internal-customer-logs and provide path like path_for_logs/jfrog/
+          allowCustom: true
+      # SCM integration where the repository is located
+      gitProvider: GITHUB_MPATEL
+      # Repository path, including org name/repo name
+      path: MaharshiPatel/requestToUsage
+      buildOn:
+        pullRequestCreate: true
+        commit: true
+      branches:
+        # Specifies which branches will trigger dependent steps
+        include: main
+
+pipelines:
+  - name: find-usage
+    steps:
+      - name: locate_logs
+        type: Bash
+          integrations:
+            - name:  Artifactory_MPATEL  # required
+          inputResources:
+            - name: git_node_repo   # required
+        execution:
+          onStart:
+            - echo "Preparing for work..."
+            - echo $path_for_logs
+          onExecute:
+            - echo $res_src_resourcePath
+            - echo $path_for_logs
