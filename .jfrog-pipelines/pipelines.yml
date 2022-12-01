@@ -32,7 +32,8 @@ pipelines:
             - echo $path_for_logs
           onExecute:
             - echo $path_for_logs
-            - ls
+            - pip install --upgrade pip
+            - ls -la
             - cd $res_script_resourcePath
-            - ls
+            - ls workspace
             - python start.py
