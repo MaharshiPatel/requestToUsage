@@ -1,5 +1,5 @@
 resources:
-  - name: git_node_repo
+  - name: git_source
     type: GitRepo
     configuration:
       environmentVariables:
@@ -24,10 +24,8 @@ pipelines:
       - name: locate_logs
         type: Bash
         configuration:
-          integrations:
-            - name:  Artifactory_MPATEL  # required
           inputResources:
-            - name: git_node_repo   # required
+            - name: git_source   # required
         execution:
           onStart:
             - echo "Preparing for work..."
