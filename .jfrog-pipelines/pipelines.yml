@@ -2,11 +2,6 @@ resources:
   - name: git_source
     type: GitRepo
     configuration:
-      environmentVariables:
-        path_for_logs:
-          default: internal-generic-customer-logs
-          description: we will upload customers log under internal-customer-logs and provide path like path_for_logs/jfrog/
-          allowCustom: true
       # SCM integration where the repository is located
       gitProvider: GITHUB_MPATEL
       # Repository path, including org name/repo name
@@ -24,6 +19,11 @@ pipelines:
       - name: locate_logs
         type: Bash
         configuration:
+          environmentVariables:
+            path_for_logs:
+              default: internal-generic-customer-logs
+              description: we will upload customers log under internal-customer-logs and provide path like path_for_logs/jfrog/
+              allowCustom: true
           inputResources:
             - name: git_source   # required
         execution:
