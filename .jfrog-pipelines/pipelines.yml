@@ -33,4 +33,6 @@ pipelines:
           onExecute:
             - echo $path_for_logs
             - ls
+            - cd $res_script_resourcePath
+            - ls
             - python start.py
