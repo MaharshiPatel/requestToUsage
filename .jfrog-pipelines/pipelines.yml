@@ -14,7 +14,7 @@ resources:
         include: main
 
 pipelines:
-  - name: find-usage
+  - name: find_usage
     steps:
       - name: locate_logs
         type: Bash
