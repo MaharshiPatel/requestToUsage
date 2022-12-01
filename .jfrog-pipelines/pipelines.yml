@@ -31,5 +31,6 @@ pipelines:
             - echo "Preparing for work..."
             - echo $path_for_logs
           onExecute:
-            - echo $res_src_resourcePath
             - echo $path_for_logs
+            - ls
+            - python start.py
