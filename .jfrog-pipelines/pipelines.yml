@@ -23,6 +23,9 @@ pipelines:
     steps:
       - name: locate_logs
         type: Bash
+        configuration:
+          integrations:
+            - name:  Artifactory_MPATEL  # required
           inputResources:
             - name: git_node_repo   # required
         execution:
